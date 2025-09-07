@@ -56,7 +56,7 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
   }
 
   return (
-    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+    <Card className="bg-white dark:bg-gray-800 border-0 shadow-sm">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center text-gray-900 dark:text-white">
@@ -68,7 +68,7 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
               <Button
                 size="sm"
                 variant="outline"
-                className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-transparent"
+                className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-transparent px-6 py-3"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Note
@@ -80,7 +80,7 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
               </DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="note-title" className="text-gray-700 dark:text-gray-300">
+                  <Label htmlFor="note-title" className="text-gray-700 dark:text-gray-300 px-1 py-2 block">
                     Title
                   </Label>
                   <Input
@@ -92,7 +92,7 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
                   />
                 </div>
                 <div>
-                  <Label htmlFor="note-description" className="text-gray-700 dark:text-gray-300">
+                  <Label htmlFor="note-description" className="text-gray-700 dark:text-gray-300 px-1 py-2 block">
                     Description
                   </Label>
                   <Textarea
@@ -108,7 +108,9 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
                   <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
                     Cancel
                   </Button>
-                  <Button onClick={handleAddNote}>Add Note</Button>
+                  <Button onClick={handleAddNote} className="bg-black text-white hover:bg-gray-800">
+                    Add Note
+                  </Button>
                 </div>
               </div>
             </DialogContent>
@@ -154,7 +156,7 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
                       {editingNote && (
                         <div className="space-y-4">
                           <div>
-                            <Label htmlFor="edit-title" className="text-gray-700 dark:text-gray-300">
+                            <Label htmlFor="edit-title" className="text-gray-700 dark:text-gray-300 px-1 py-2 block">
                               Title
                             </Label>
                             <Input
@@ -166,7 +168,10 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
                             />
                           </div>
                           <div>
-                            <Label htmlFor="edit-description" className="text-gray-700 dark:text-gray-300">
+                            <Label
+                              htmlFor="edit-description"
+                              className="text-gray-700 dark:text-gray-300 px-1 py-2 block"
+                            >
                               Description
                             </Label>
                             <Textarea
@@ -182,7 +187,9 @@ export default function NotesSection({ notes, onAddNote, onUpdateNote, onDeleteN
                             <Button variant="outline" onClick={() => setEditingNote(null)}>
                               Cancel
                             </Button>
-                            <Button onClick={handleEditNote}>Save Changes</Button>
+                            <Button onClick={handleEditNote} className="bg-black text-white hover:bg-gray-800">
+                              Save Changes
+                            </Button>
                           </div>
                         </div>
                       )}

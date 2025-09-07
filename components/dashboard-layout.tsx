@@ -132,7 +132,7 @@ export default function DashboardLayout({ children, projects, onAddProject }: Da
             <button
               key={item.name}
               onClick={() => router.push(item.path)}
-              className={`w-full flex items-center px-3 py-2 mb-1 text-sm font-medium rounded-lg transition-colors ${
+              className={`w-full flex items-center px-3 mb-1 text-sm font-medium rounded-lg transition-colors py-4 bg-[rgba(255,255,255,1)] ${
                 pathname === item.path
                   ? "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
                   : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -144,9 +144,9 @@ export default function DashboardLayout({ children, projects, onAddProject }: Da
           ))}
         </nav>
 
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-t dark:border-gray-700 leading-6 rounded border-transparent shadow-2xl bg-slate-50">
           <div className="mb-4">
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-5">
               <span className="text-sm font-medium text-gray-900 dark:text-white">Projects</span>
               <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
                 <DialogTrigger asChild>
@@ -199,19 +199,19 @@ export default function DashboardLayout({ children, projects, onAddProject }: Da
               </Dialog>
             </div>
             {projects.map((project) => (
-              <div key={project.id} className="flex items-center mb-2">
+              <div key={project.id} className="flex items-center mb-2 flex-row leading-6">
                 <div className={`w-3 h-3 rounded-full ${project.color} mr-2`} />
-                <span className="text-sm text-gray-600 dark:text-gray-300">{project.name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 my-2">{project.name}</span>
               </div>
             ))}
           </div>
 
           <div className="space-y-2">
-            <button className="w-full flex items-center px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+            <button className="w-full flex items-center text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg leading-4 px-0 py-0.5">
               <Settings className="w-4 h-4 mr-3" />
               Settings
             </button>
-            <button className="w-full flex items-center px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+            <button className="w-full flex items-center py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg px-0">
               <HelpCircle className="w-4 h-4 mr-3" />
               Help & Support
               <Badge
@@ -244,8 +244,8 @@ export default function DashboardLayout({ children, projects, onAddProject }: Da
             <div className="flex items-center space-x-4">
               <div className="flex items-center">
                 <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 rounded-r-none">
-                  <Plus className="w-4 h-4 mr-2" />
-                  New Project
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 mr-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg><svg className="border-transparent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 mr-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 mr-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>New Project
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
