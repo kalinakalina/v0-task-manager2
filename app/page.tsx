@@ -319,6 +319,11 @@ export default function MyTaskPage() {
             </Button>
           </div>
 
+          {/* Debug button for testing onboarding */}
+          <Button onClick={() => setShowOnboarding(true)} variant="outline" size="sm" className="mb-4">
+            Restart Onboarding (Debug)
+          </Button>
+
           {/* Stats */}
           <div className="flex items-center space-x-8 mb-8">
             <div className="flex items-center">

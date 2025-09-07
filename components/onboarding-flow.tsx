@@ -33,7 +33,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
           <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-sm mx-auto">
             Let's get you set up with your workspace in less than a minute.
           </p>
-          <Button onClick={handleNext} className="bg-black hover:bg-gray-800 text-white px-8 py-2">
+          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
             Get started
           </Button>
         </div>
@@ -84,7 +84,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               )}
             </button>
           </div>
-          <Button onClick={handleNext} className="bg-black hover:bg-gray-800 text-white px-8 py-2">
+          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
             Continue
           </Button>
         </div>
@@ -105,7 +105,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               </p>
             </div>
           </div>
-          <Button onClick={handleNext} className="bg-black hover:bg-gray-800 text-white px-8 py-2">
+          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
             I'll do it later
           </Button>
         </div>
