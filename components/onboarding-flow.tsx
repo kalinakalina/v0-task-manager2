@@ -29,11 +29,16 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     {
       content: (
         <div className="text-center">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Welcome to Task Manager Pro</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-sm mx-auto">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">
+            Welcome to Task Manager Pro
+          </h2>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6 md:mb-8 max-w-sm mx-auto px-4">
             Let's get you set up with your workspace in less than a minute.
           </p>
-          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
+          <Button
+            onClick={handleNext}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-medium min-h-[44px]"
+          >
             Get started
           </Button>
         </div>
@@ -42,19 +47,23 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     {
       content: (
         <div className="text-center">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Choose your theme</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">You can change this anytime in settings</p>
-          <div className="flex gap-4 justify-center mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">
+            Choose your theme
+          </h2>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6 md:mb-8 px-4">
+            You can change this anytime in settings
+          </p>
+          <div className="flex gap-3 md:gap-4 justify-center mb-6 md:mb-8 px-4">
             <button
               onClick={() => handleThemeSelect("light")}
-              className={`relative w-32 h-20 rounded-lg border-2 transition-all ${
+              className={`relative w-24 h-16 md:w-32 md:h-20 rounded-lg border-2 transition-all ${
                 theme === "light"
                   ? "border-primary shadow-md"
                   : "border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
               }`}
             >
               <div className="absolute inset-0 bg-white rounded-md m-1 flex items-center justify-center">
-                <Sun className="w-6 h-6 text-gray-600" />
+                <Sun className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
               </div>
               {theme === "light" && (
                 <div className="absolute -top-2 -right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
@@ -66,14 +75,14 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             </button>
             <button
               onClick={() => handleThemeSelect("dark")}
-              className={`relative w-32 h-20 rounded-lg border-2 transition-all ${
+              className={`relative w-24 h-16 md:w-32 md:h-20 rounded-lg border-2 transition-all ${
                 theme === "dark"
                   ? "border-primary shadow-md"
                   : "border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
               }`}
             >
               <div className="absolute inset-0 bg-gray-900 rounded-md m-1 flex items-center justify-center">
-                <Moon className="w-6 h-6 text-gray-300" />
+                <Moon className="w-5 h-5 md:w-6 md:h-6 text-gray-300" />
               </div>
               {theme === "dark" && (
                 <div className="absolute -top-2 -right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
@@ -84,7 +93,10 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               )}
             </button>
           </div>
-          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
+          <Button
+            onClick={handleNext}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-medium min-h-[44px]"
+          >
             Continue
           </Button>
         </div>
@@ -93,19 +105,24 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     {
       content: (
         <div className="text-center">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Create your first task</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">
+            Create your first task
+          </h2>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6 md:mb-8 px-4">
             Try adding a task to get started with Task Manager Pro
           </p>
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8 max-w-sm mx-auto">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 md:p-6 mb-6 md:mb-8 max-w-sm mx-auto">
             <div className="text-left">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Quick tip:</p>
-              <p className="text-sm text-gray-900 dark:text-white">
+              <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-2">Quick tip:</p>
+              <p className="text-sm md:text-sm text-gray-900 dark:text-white">
                 Click the "New Project" button to get started with your first project
               </p>
             </div>
           </div>
-          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2">
+          <Button
+            onClick={handleNext}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-medium min-h-[44px]"
+          >
             I'll do it later
           </Button>
         </div>
@@ -114,8 +131,8 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   ]
 
   return (
-    <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex items-center justify-center z-50">
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+    <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex items-center justify-center z-50 p-4">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
         {steps.map((_, index) => (
           <button
             key={index}
@@ -132,7 +149,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
         ))}
       </div>
       <div className="relative w-full max-w-md">
-        <div className="relative h-[400px] overflow-hidden">
+        <div className="relative h-[320px] md:h-[400px] overflow-hidden">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -140,7 +157,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
                 index === currentStep ? "translate-x-0" : index < currentStep ? "-translate-x-full" : "translate-x-full"
               }`}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-12 h-full flex items-center">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-12 h-full flex items-center">
                 {step.content}
               </div>
             </div>
