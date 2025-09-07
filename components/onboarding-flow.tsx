@@ -28,19 +28,23 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const steps = [
     {
       content: (
-        <div className="text-center">
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">
-            Welcome to Task Manager Pro
-          </h2>
-          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6 md:mb-8 max-w-sm mx-auto px-4">
-            Let's get you set up with your workspace in less than a minute.
-          </p>
-          <Button
-            onClick={handleNext}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-medium min-h-[44px]"
-          >
-            Get started
-          </Button>
+        <div className="text-center space-y-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Welcome to Task Manager Pro
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-sm mx-auto">
+              Let's get you set up with your workspace in less than a minute.
+            </p>
+          </div>
+          <div className="pt-4">
+            <Button
+              onClick={handleNext}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-semibold rounded-lg shadow-lg min-h-[56px] w-full max-w-xs"
+            >
+              Get started
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -132,35 +136,36 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
 
   return (
     <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex items-center justify-center z-50 p-4">
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-        {steps.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentStep(index)}
-            disabled={index > currentStep}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentStep
-                ? "bg-gray-900 dark:bg-white w-6"
-                : index < currentStep
-                  ? "bg-gray-400 dark:bg-gray-500"
-                  : "bg-gray-300 dark:bg-gray-700"
-            } ${index <= currentStep ? "cursor-pointer" : "cursor-not-allowed"}`}
-          />
-        ))}
-      </div>
-      <div className="relative w-full max-w-md">
-        <div className="relative h-[320px] md:h-[400px] overflow-hidden">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-transform duration-300 ease-out ${
-                index === currentStep ? "translate-x-0" : index < currentStep ? "-translate-x-full" : "translate-x-full"
-              }`}
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-12 h-full flex items-center">
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 md:p-12 min-h-[400px] flex flex-col justify-center">
+          <div className="relative overflow-hidden">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className={`transition-transform duration-300 ease-out ${
+                  index === currentStep
+                    ? "translate-x-0"
+                    : index < currentStep
+                      ? "-translate-x-full"
+                      : "translate-x-full"
+                } ${index !== currentStep ? "absolute inset-0" : ""}`}
+              >
                 {step.content}
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-6">
+          {steps.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentStep(index)}
+              disabled={index > currentStep}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentStep ? "bg-blue-600 w-6" : index < currentStep ? "bg-gray-400" : "bg-gray-300"
+              } ${index <= currentStep ? "cursor-pointer" : "cursor-not-allowed"}`}
+            />
           ))}
         </div>
       </div>
