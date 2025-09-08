@@ -105,3 +105,55 @@
     @apply text-xs font-normal;
   } /* 12px */
 }
+
+/* Force onboarding button visibility with high specificity */
+@layer components {
+  .onboarding-button {
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+    padding: 14px 36px !important;
+    border-radius: 8px !important;
+    border: 2px solid #1d4ed8 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    min-height: 48px !important;
+    min-width: 140px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .onboarding-button:hover {
+    background-color: #1e40af !important;
+    border-color: #1e40af !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .onboarding-button:active {
+    transform: translateY(0) !important;
+  }
+
+  /* Override any conflicting button styles */
+  button.onboarding-button,
+  .onboarding-button {
+    all: unset !important;
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+    padding: 14px 36px !important;
+    border-radius: 8px !important;
+    border: 2px solid #1d4ed8 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    min-height: 48px !important;
+    min-width: 140px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    transition: all 0.2s ease !important;
+  }
+}

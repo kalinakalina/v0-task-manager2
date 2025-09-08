@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 
 interface OnboardingFlowProps {
   onComplete: () => void
@@ -59,12 +58,9 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             </p>
           </div>
           <div className="pt-4">
-            <Button
-              onClick={handleNext}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 h-10 min-h-[40px]"
-            >
+            <button onClick={handleNext} className="onboarding-button">
               Get started
-            </Button>
+            </button>
           </div>
         </div>
       ),
@@ -118,9 +114,9 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               )}
             </button>
           </div>
-          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 h-10 min-h-[40px]">
+          <button onClick={handleNext} className="onboarding-button">
             Continue
-          </Button>
+          </button>
         </div>
       ),
     },
@@ -141,49 +137,78 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               </p>
             </div>
           </div>
-          <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 h-10 min-h-[40px]">
+          <button onClick={handleNext} className="onboarding-button">
             I'll do it later
-          </Button>
+          </button>
         </div>
       ),
     },
   ]
 
   return (
-    <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex items-center justify-center z-50 p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 md:p-12 relative h-[400px] md:h-[400px] max-h-[80vh] overflow-hidden">
-          <div className="relative overflow-hidden h-full flex flex-col justify-center">
-            {steps.map((step, index) => (
-              <div
+    <>
+      <style jsx>{`
+        .onboarding-button {
+          background-color: #1d4ed8 !important;
+          color: #ffffff !important;
+          padding: 14px 36px !important;
+          border-radius: 8px !important;
+          border: 2px solid #1d4ed8 !important;
+          font-size: 16px !important;
+          font-weight: 600 !important;
+          cursor: pointer !important;
+          min-height: 48px !important;
+          min-width: 140px !important;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+          display: inline-block !important;
+          text-align: center !important;
+          line-height: 1.2 !important;
+          transition: all 0.2s ease !important;
+        }
+        .onboarding-button:hover {
+          background-color: #1e40af !important;
+          border-color: #1e40af !important;
+          transform: translateY(-1px) !important;
+        }
+        .onboarding-button:active {
+          transform: translateY(0) !important;
+        }
+      `}</style>
+      <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex items-center justify-center z-50 p-4">
+        <div className="w-full max-w-md">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 md:p-12 relative h-[400px] md:h-[400px] max-h-[80vh] overflow-hidden">
+            <div className="relative overflow-hidden h-full flex flex-col justify-center">
+              {steps.map((step, index) => (
+                <div
+                  key={index}
+                  className={`transition-transform duration-300 ease-out ${
+                    index === currentStep
+                      ? "translate-x-0"
+                      : index < currentStep
+                        ? "-translate-x-full"
+                        : "translate-x-full"
+                  } ${index !== currentStep ? "absolute inset-0" : ""}`}
+                >
+                  {step.content}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-6">
+            {steps.map((_, index) => (
+              <button
                 key={index}
-                className={`transition-transform duration-300 ease-out ${
-                  index === currentStep
-                    ? "translate-x-0"
-                    : index < currentStep
-                      ? "-translate-x-full"
-                      : "translate-x-full"
-                } ${index !== currentStep ? "absolute inset-0" : ""}`}
-              >
-                {step.content}
-              </div>
+                onClick={() => setCurrentStep(index)}
+                disabled={index > currentStep}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentStep ? "bg-blue-600 w-6" : index < currentStep ? "bg-gray-400" : "bg-gray-300"
+                } ${index <= currentStep ? "cursor-pointer" : "cursor-not-allowed"}`}
+              />
             ))}
           </div>
         </div>
-
-        <div className="flex justify-center gap-2 mt-6">
-          {steps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentStep(index)}
-              disabled={index > currentStep}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === currentStep ? "bg-blue-600 w-6" : index < currentStep ? "bg-gray-400" : "bg-gray-300"
-              } ${index <= currentStep ? "cursor-pointer" : "cursor-not-allowed"}`}
-            />
-          ))}
-        </div>
       </div>
-    </div>
+    </>
   )
 }
